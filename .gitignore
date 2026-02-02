@@ -53,3 +53,7 @@ audio_uploads/
 *.safetensors
 german-teacher-model/
 german-teacher-model-*/
+
+# Docker related
+docker-compose.yml
+DockerFile
