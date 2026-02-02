@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-body text-ink-900 bg-ink-50;
+  }
+  
+  ::selection {
+    @apply bg-sage-300 text-sage-950;
+  }
+}
+
+@layer components {
+  /* Chat bubbles */
+  .chat-bubble-user {
+    @apply bg-sage-600 text-white rounded-2xl rounded-br-md px-4 py-3 max-w-[80%] ml-auto;
+    @apply animate-slide-in-right;
+  }
+  
+  .chat-bubble-assistant {
+    @apply bg-white border border-ink-200 text-ink-800 rounded-2xl rounded-bl-md px-4 py-3 max-w-[80%];
+    @apply shadow-sm animate-slide-in-left;
+  }
+  
+  /* Mode cards */
+  .mode-card {
+    @apply relative overflow-hidden rounded-2xl p-6 cursor-pointer transition-all duration-300;
+    @apply hover:scale-[1.02] hover:shadow-xl;
+  }
+  
+  /* Sidebar items */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200;
+    @apply hover:bg-ink-100 cursor-pointer;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-sage-100 text-sage-800 font-medium;
+  }
+  
+  /* Input styles */
+  .input-primary {
+    @apply w-full px-4 py-3 bg-white border border-ink-200 rounded-xl;
+    @apply focus:outline-none focus:ring-2 focus:ring-sage-400 focus:border-transparent;
+    @apply transition-all duration-200;
+    @apply placeholder:text-ink-400;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-sage-600 text-white font-medium rounded-xl;
+    @apply hover:bg-sage-700 active:scale-95 transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-sage-600;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-ink-100 text-ink-700 font-medium rounded-xl;
+    @apply hover:bg-ink-200 active:scale-95 transition-all duration-200;
+  }
+  
+  .btn-ghost {
+    @apply px-4 py-2 text-ink-600 font-medium rounded-lg;
+    @apply hover:bg-ink-100 active:scale-95 transition-all duration-200;
+  }
+  
+  .btn-icon {
+    @apply p-3 rounded-xl transition-all duration-200;
+    @apply hover:bg-ink-100 active:scale-95;
+  }
+  
+  /* Grammar alert */
+  .grammar-alert {
+    @apply bg-amber-50 border border-amber-300 rounded-xl p-4 my-3;
+    @apply animate-fade-in;
+  }
+  
+  /* Document card */
+  .document-card {
+    @apply bg-white border border-ink-200 rounded-xl p-4;
+    @apply hover:border-sage-400 hover:shadow-md transition-all duration-200 cursor-pointer;
+  }
+  
+  /* Category badge */
+  .category-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .category-badge.topic {
+    @apply bg-sage-100 text-sage-700;
+  }
+  
+  .category-badge.grammar {
+    @apply bg-amber-100 text-amber-700;
+  }
+  
+  .category-badge.document {
+    @apply bg-coral-100 text-coral-700;
+  }
+  
+  /* Scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-ink-300 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-400;
+  }
+  
+  /* Recording animation */
+  .recording-indicator {
+    @apply relative flex items-center justify-center;
+  }
+  
+  .recording-indicator::before {
+    content: '';
+    @apply absolute w-full h-full rounded-full bg-coral-500 animate-ping opacity-75;
+  }
+  
+  .recording-indicator::after {
+    content: '';
+    @apply w-4 h-4 rounded-full bg-coral-500;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-sage-600 to-sage-800;
+  }
+  
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+  
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+  }
+}
